@@ -15,7 +15,7 @@ void Libcell_Opt_init(L_Opt* op)
     op->Ai=NULL;
     op->rows=0;
 }
-
+//用到了c的prop属性,没有用到v的prop
 void libcell_compute_dual_point(template_m*mesh,template_c* c_)
 {
     int dim=mesh->dimension;
@@ -58,6 +58,19 @@ static Node* two_points_cells(template_m*m,template_v*v0,template_v* v1)
     }
     return re;
 }
+static void test_cut_num_(double **v,int rows,int cols)
+{
+    for(int i=0;i<rows;i++)
+    {
+        for(int j=0;j<cols;j++)
+        {
+            int a=1000000*v[i][j];
+            v[i][j]=a/1000000.0; 
+        }
+    
+    }
+}
+
 static double two_points_dual_data(template_m*m,template_v*v0,template_v*v1)
 {
     double re=0;
@@ -66,11 +79,7 @@ static double two_points_dual_data(template_m*m,template_v*v0,template_v*v1)
     int dim=m->dimension;
     int cols=dim;
     int rows=node_size(n_it);
-    if(rows!=2)
-    {
-        printf("cuowu\n");
-    }
-
+    
     double **v=(double**)malloc(sizeof(double*)*rows);
     for(int i=0;i<rows;i++)
     {
@@ -94,6 +103,7 @@ static double two_points_dual_data(template_m*m,template_v*v0,template_v*v1)
     {
          re1+=(v[0][j]-v[1][j])*(v[0][j]-v[1][j]); 
     }*/
+    test_cut_num_(v,rows,cols);
     re=compute_convex_area(v,rows,cols,dim-1);
     //printf("bijiao:%lf   %lf\n",re,sqrt(re1));
     double norm=0;
@@ -110,9 +120,9 @@ static double two_points_dual_data(template_m*m,template_v*v0,template_v*v1)
     free_node(n_it1);
     return re;
 }
+
 static double get_measure(L_Opt* myopt)
-{
-    Mesh* mesh=myopt->mesh;
+{    Mesh* mesh=myopt->mesh;
     template_v*v0=myopt->v0,*v1=NULL;
     double re=0;
     int dim=mesh->dimension;
@@ -147,8 +157,37 @@ static double get_measure(L_Opt* myopt)
             n_it=(Node*)(n_it->Next);
             i++;
         }
+        //here
+	/*	if(rows>=15)
+		{
+            
+            test_cut_num_(v,rows,cols);
+		    printf("h rows:%d\n",rows);
+            for(int i=0;i<rows;i++)
+            {
+                for(int j=0;j<cols;j++)
+                {
+                    printf("%.30f,",v[i][j]);
+                }
+                printf("\n");
+            }
+        }
+		else
+		{
+		printf("rows:%d\n",rows);
+            for(int i=0;i<rows;i++)
+            {
+                for(int j=0;j<cols;j++)
+                {
+                    printf("%.30f,",v[i][j]);
+                }
+                printf("\n");
+            }
+		}*/	    
+	    test_cut_num_(v,rows,cols);
         temp_v1=compute_convex_area(v,rows,cols,dim);
         myopt->Wi[*((int*)(v1->prop1))]=temp_v1;
+        printf("wi:%lf \n",temp_v1);
         re+=temp_v1;
         for(i=0;i<rows;i++)
         {
@@ -225,7 +264,7 @@ static void fill_H(L_Opt* myopt)
     double**H=myopt->H;
     int i=0,j=0;
     double temp_sum=0;
-    int rows=node_size(myopt->node_v);
+  
     while(n_it!=NULL)
     {
     
@@ -269,7 +308,9 @@ void iteration(L_Opt* myopt)
     double* Wi=(double*)malloc(sizeof(double)*rows);
     myopt->Wi=Wi;
         //fill Wi
+
     get_measure(myopt);
+    printf("sum_meas:%lf\n",myopt->sum_meas);
     Node* n_it=myopt->node_v;
     while(n_it!=NULL)
     {
@@ -304,7 +345,7 @@ void iteration(L_Opt* myopt)
     cholesky_decomp(H,L,D,rows-1);
     double*x=cholesky_solve(H,L,D,Wi,rows-1);    
     n_it=myopt->node_v;
-    int i=0;double t=0.04;
+    int i=0;double t=0.014;
     while(n_it!=NULL)
     {
         template_v*v=(template_v*)(n_it->value);

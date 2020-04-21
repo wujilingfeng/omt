@@ -1,7 +1,7 @@
 #include<Mesh_view/Mesh_viewer_interpreter.h>
 #include "include/opt.h"
 #include<tool/libcell_tools_view.h>
-//#include<iostream>
+#include<iostream>
 typedef struct myanimation
 {
     Mesh* mesh;
@@ -44,11 +44,85 @@ int main()
             }
         }
     }*/
+//    Eigen::MatrixXd A(24,4);
+/*    A<<0.070520521200000005346275600004,0.092321399999999997909583271394,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.113275185400000005797593871648,0.064418742000000001057813392435,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.082658631999999995776384764667,0.106561249900000001855637776771,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.080065807200000005394713298301,0.106625704900000006780658168282,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.082562390099999993786639151949,0.089196737999999997636990656247,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.114646251399999996034573257475,0.054330086399999998059140438045,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.087457438100000006730994073223,-0.016363862800000000125022481257,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.073725474499999998911903276166,-0.006239110800000000241205544427,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.068192995100000000641138342417,0.016326049100000000063870331246,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.086984531200000006490036241757,0.043811974500000003263089354277,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.049885169399999998440797810417,0.021983758900000000685581724724,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.032954001099999997992373579336,0.042383597000000002019692857402,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.026021966099999998406344658974,0.056822831800000001001293981062,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.016340481000000000449956516491,0.053546509600000000150821222178,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.019678191700000000063930372107,0.046811146400000003264807446612,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.030237093499999999346439238934,0.009181909199999999451891063984,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.029913883499999998488716457246,0.007038980700000000041705039422,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.020388770800000000776863728902,0.004971218000000000337978978138,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.014707106799999999577344134138,0.023433714700000000258350851823,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.013670972499999999721920218576,0.054224362200000000844291037083,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.038907190799999998020997082904,0.020418590199999999551527807284,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.042046912300000002793431974624,-0.005748506599999999785999271751,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.041157782400000002265283427505,-0.004181704900000000370285935247,-0.214748364800000007823754799574,0.000000000000000000000000000000,
+0.036759981999999996604699958880,-0.003287679200000000016845813633,-0.214748364800000007823754799574,0.000000000000000000000000000000;*/
+  /*      A<<0.0705205212,0.0923213999,-0.2147483648,0.0000000000,
+0.1132751854,0.0644187420,-0.2147483648,0.0000000000,
+0.0826586319,0.1065612499,-0.2147483648,0.0000000000,
+0.0800658072,0.1066257049,-0.2147483648,0.0000000000,
+0.0825623900,0.0891967379,-0.2147483648,0.0000000000,
+0.1146462513,0.0543300863,-0.2147483648,0.0000000000,
+0.0874574381,-0.0163638628,-0.2147483648,0.0000000000,
+0.0737254744,-0.0062391108,-0.2147483648,0.0000000000,
+0.0681929951,0.0163260491,-0.2147483648,0.0000000000,
+0.0869845312,0.0438119745,-0.2147483648,0.0000000000,
+0.0498851693,0.0219837589,-0.2147483648,0.0000000000,
+0.0329540010,0.0423835970,-0.2147483648,0.0000000000,
+0.0260219660,0.0568228318,-0.2147483648,0.0000000000,
+0.0163404810,0.0535465096,-0.2147483648,0.0000000000,
+0.0196781917,0.0468111464,-0.2147483648,0.0000000000,
+0.0302370934,0.0091819091,-0.2147483648,0.0000000000,
+0.0299138834,0.0070389807,-0.2147483648,0.0000000000,
+0.0203887708,0.0049712180,-0.2147483648,0.0000000000,
+0.0147071067,0.0234337147,-0.2147483648,0.0000000000,
+0.0136709724,0.0542243622,-0.2147483648,0.0000000000,
+0.0389071907,0.0204185901,-0.2147483648,0.0000000000,
+0.0420469123,-0.0057485065,-0.2147483648,0.0000000000,
+0.0411577824,-0.0041817049,-0.2147483648,0.0000000000,
+0.0367599819,-0.0032876792,-0.2147483648,0.0000000000;
+    //std::cout<<A<<std::endl;
+    for(int i=0;i<3;i++)
+    {
+      //  printf("%lf ",A.data()[i]);
+    }
+    Mesh mesh;
+    A_Mesh_init(&mesh);
+    double **VV=(double**)malloc(sizeof(double*)*24);
+    for(int i=0;i<24;i++)
+    {
+        VV[i]=(double*)malloc(sizeof(double)*4);
+        for(int j=0;j<4;j++)
+        {
+            VV[i][j]=A.data()[j*24+i];
+            //int a=VV[i][j]*10000000000;
+            //VV[i][j]=a/10000000000.0;
+            printf("%lf ",VV[i][j]);
+        }
+        printf("\n");
+    }
+    compute_convex_area(VV,24,4,3);
+*/
+  // double t=0.2345;
+  //  int a=t*100;
+   // printf("%d  \n",a);
     test_opt();
     //test_area();
-    //test3D(); 
+//    test3D(); 
     //test_convex();
-  //  test_delauny();
+//    test_delauny();
 /*    Mesh mesh;
     Mesh_init(&mesh);
     double **v=(double**)malloc(sizeof(double*)*8);
@@ -101,7 +175,8 @@ static void init_opt1(L_Opt*myopt)
     }
     printf("num_v:%d\n",mesh->num_v(mesh));
     double temp_sum=0;
-    double *v;int *id;
+    //double *v=NULL;
+    int *id=NULL;
     for(auto iter=mesh->vertices.begin();iter!=mesh->vertices.end();iter++)
     {
         temp_sum=0;
@@ -115,8 +190,8 @@ static void init_opt1(L_Opt*myopt)
         iter->second->point_size++;
         free(iter->second->point);
         iter->second->point=temp_v;
-        v=(double*)malloc(sizeof(double));
-        iter->second->prop=(void*)v;
+        //v=(double*)malloc(sizeof(double));
+        //iter->second->prop=(void*)v;
         id=(int*)malloc(sizeof(int));
         iter->second->prop1=(void*)id;
     }
@@ -177,8 +252,7 @@ static void init_opt(Mesh*mesh)
         temp_v1[mesh->dimension]=v0;
         mesh->create_cellv(mesh,temp_v1,mesh->dimension+1);
         n_it=(Node*)(n_it->Next);
-    }
- 
+    } 
 }
 static void cut_out(Mesh* mesh)
 {   
@@ -256,10 +330,7 @@ static void improve_topology_from_mesh(L_Opt*myopt)
         {
            temp_v[i]=p1[i]+p[i]*t;
         }
-
-     
         n_it=(Node*)(n_it->Next);
-
     }
     n_it=mesh->external_cell.halffaces;
     template_c* c_=NULL;
@@ -277,6 +348,15 @@ static void improve_topology_from_mesh(L_Opt*myopt)
         
         n_it=(Node*)(n_it->Next);
     }
+}
+static void draw_points(Mesh_viewer_points* mp,Mesh* mesh)
+{
+
+    mp->Data_rows=mesh->num_c(mesh);
+    mp->Data=(float*)malloc(sizeof(float)*3*mp->Data_rows);
+    memset(mp->Data,0,sizeof(float)*3*mp->Data_rows);
+
+
 }
 static void draw_edges(Mesh_viewer_edges* me,Mesh* mesh)
 {
@@ -372,14 +452,13 @@ void test_opt()
     Mesh mesh;
     A_Mesh_init(&mesh);
     myopt.mesh=&mesh;
-    _ReadCell_(&mesh,"delauny_circle.cell");
+    _ReadCell_(&mesh,"delauny_sphere.cell");
     //init_opt(&mesh);
     init_opt1(&myopt);
     printf("num_v:%d\n",mesh.num_v(&mesh));
     ///kaishi
     mesh_createconvex(&mesh);
     printf("numc:%d\n",mesh.num_c(&mesh));
-    Eigen::MatrixXd A;
     for(auto iter=mesh.vc_begin(&mesh,*(myopt.v0));iter!=mesh.vc_end(&mesh,*(myopt.v0));iter++)
     {
         mesh.delete_cell(&mesh,*iter,true); 
@@ -391,17 +470,20 @@ void test_opt()
     cut_out(&mesh);
     improve_topology_from_mesh(&myopt);
     printf("numc11: %d\n",mesh.num_v(&mesh));
-    for(int i=0;i<100;i++)
+    /*for(int i=0;i<330;i++)
     {
-       iteration(&myopt);
-      iteration_end(&myopt);
-  
-    }
+        iteration(&myopt);
+        if(i==120)
+        {
+            break;
+        }
+        iteration_end(&myopt);
+    }*/
+    
       /* f0=(template_f*)(node_f->value);
     flag=convex_adjust(&mesh,f0);
     free_node(node_f);
-    node_f=NULL;
-*/
+    node_f=NULL;*/
 
    /* if(flag)
     {
@@ -415,8 +497,8 @@ void test_opt()
     Mesh_viewer_something*ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
     mf->color_rows=mesh.num_c(&mesh);
-    
-//    float color[3]={1.0,0.0,0.0};
+
+    float color[]={1.0,1.0,0.0};
     //mf->set_color(mf,color);
     mf->random_color(mf);
     get_data_from_2dim_cell(&mesh,&(mf->Data),&(mf->Data_index));
@@ -425,24 +507,9 @@ void test_opt()
     mf->normal_rows=mf->Data_rows;
     mf->is_reversal_normal=1;
     ms->disappear=1;
-    //n=(Node*)(n->Prev);
-    //ms=(Mesh_viewer_something*)(n->value);
-    //mf=(Mesh_viewer_faces*)(ms->evolution);
-    //mf->color_rows=mesh1.num_c(&mesh1);
-    //mf->random_color(mf);
-    //float temp_color[]={0.1,0.9,0.3};
-    //mf->set_color(mf,temp_color);
-   // mf->normal_rows=mesh1.num_c(&mesh1);
-   // get_data_from_2dim_cell(&mesh1,&(mf->Data),&(mf->Data_index));
-   // mf->Data_rows=mesh1.num_v(&mesh1);
-   // mf->Data_index_rows=mesh1.num_c(&mesh1);
-  //  ms->disappear=1;
-        //mf->Data_rows=mesh.num_v(&mesh);
-        //mf->Data_index_rows=mesh.num_c(&mesh);
-        //mf->normal_rows=mesh.num_c(&mesh);
 
     free_node(n);
-    char edges[]="edges,edges";
+    /*char edges[]="edges,edges";
     n=mw.create_something(&mw,edges);
     ms=(Mesh_viewer_something*)(n->value);
     auto me=(Mesh_viewer_edges*)(ms->evolution);
@@ -452,6 +519,7 @@ void test_opt()
 
     n=(Node*)(n->Prev);
     ms=(Mesh_viewer_something*)(n->value);
+    ms->disappear=1;
     me=(Mesh_viewer_edges*)(ms->evolution);
     me->Data_rows=2;me->Data_index_rows=1;
     me->Data=(float*)malloc(sizeof(float)*3*me->Data_rows);
@@ -460,9 +528,7 @@ void test_opt()
     me->Data[3]=0;me->Data[4]=1.0;me->Data[5]=0.0;
     me->Data_index[0]=0;me->Data_index[1]=1;
     me->color_rows=me->Data_index_rows;
-    float color[]={1.0,1.0,0.0};
-    me->set_color(me,color);
-
+    me->set_color(me,color);*/
     char points[]="points";
     n=mw.create_something(&mw,points);
     ms=(Mesh_viewer_something*)(n->value);
@@ -488,9 +554,9 @@ void test_opt()
     //    mp->Data[i*3+2]=temp_sum/2.0;
         i++;
     }
-    ms->disappear=1;
+    //ms->disappear=1;
     free_node(n);
-   char Intera[]="Intera";
+    char Intera[]="Intera";
     n=mw.create_something(&mw,Intera);
     ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_Intera* mi=(Mesh_viewer_Intera*)(ms->evolution);
@@ -539,33 +605,25 @@ void test_delauny()
     for(int i=0;i<2000;i++)
     {
         v[i]=(double*)malloc(sizeof(double)*3);
-
     }
-
-    for(int i=0;i<200;i++)
+    for(int i=0;i<800;i++)
     {
         double r=1,delta=(rand()%2000)/1000.0-1,theta=(rand()%1000)/1000.0;
-      //  printf("%lf\n",delta);
-      theta=0.5;
+        //theta=0.5;
         v[i][0]=r*sin(theta*M_PI)*cos(delta*M_PI);
         v[i][1]=r*sin(theta*M_PI)*sin(delta*M_PI);
-        v[i][2]=r*cos(theta*M_PI);
-        //printf("%lf\n",v[i][0]);
-    
+        v[i][2]=r*cos(theta*M_PI); 
     }
 
-    for(int i=200;i<2000;i++)
+    for(int i=800;i<2000;i++)
     {
         double r=(rand()%1000)/1000.0,delta=(rand()%2000)/1000.0-1,theta=(rand()%1000)/1000.0;
-        theta=0.5;
-      //  printf("%lf\n",delta);
         v[i][0]=r*sin(theta*M_PI)*cos(delta*M_PI);
         v[i][1]=r*sin(theta*M_PI)*sin(delta*M_PI);
         v[i][2]=r*cos(theta*M_PI);
-        //printf("%lf\n",v[i][0]);
-    
+          
     }
-    from_v_createdelauny_simplex(&mesh,v,800,2);
+    from_v_createdelauny_simplex(&mesh,v,2000,3);
     for(auto it=mesh.vertices.begin();it!=mesh.vertices.end();it++)
     {
         it->second->point_size--; 
@@ -580,7 +638,7 @@ void test_delauny()
         re=(Node*)(re->Next);
     }
     free_node(n_it);
-    _WriteCell_(&mesh,"delauny_circle.cell");
+    _WriteCell_(&mesh,"delauny_sphere2.cell");
     
 
 
@@ -881,6 +939,22 @@ void test3D(){
     //examine(&mesh);
     //_ReadCell_(&mesh1,"face.cell");
     _ReadCell_(&mesh1,"delauny_circle.cell");
+/*    double temp_sum=0;
+    for(auto iter=mesh1.vertices.begin();iter!=mesh1.vertices.end();iter++)
+    {
+        temp_sum=0;
+        double* temp_v=(double*)malloc(sizeof(double)*(iter->second->point_size+1));
+        for(int j=0;j<iter->second->point_size;j++)
+        {
+            temp_v[j]=iter->second->point[j];
+            temp_sum+=iter->second->point[j]*iter->second->point[j];
+        }
+        temp_v[iter->second->point_size]=temp_sum/2.0;
+        iter->second->point_size++;
+        free(iter->second->point);
+        iter->second->point=temp_v;
+    }
+*/
     //mesh1.printself(&mesh1);
         // _ReadOff_(&mesh,"cube.off",3);
     printf("%d %d %d\n",mesh.num_v(&mesh),mesh.num_f(&mesh),mesh.num_c(&mesh));
@@ -895,7 +969,7 @@ void test3D(){
     mf->random_color(mf);
     get_data_from_3dim_cell(&mesh,&(mf->Data),&(mf->Data_index),&(mf->Data_rows),&(mf->Data_index_rows)); 
     mf->normal_rows=mf->Data_rows;
-   // ms->disappear=1;
+    ms->disappear=1;
     n=(Node*)(n->Prev);
     ms=(Mesh_viewer_something*)(n->value);
     mf=(Mesh_viewer_faces*)(ms->evolution);
@@ -907,7 +981,7 @@ void test3D(){
     get_data_from_2dim_cell(&mesh1,&(mf->Data),&(mf->Data_index));
     mf->Data_rows=mesh1.num_v(&mesh1);
     mf->Data_index_rows=mesh1.num_c(&mesh1);
-    ms->disappear=1;
+   // ms->disappear=1;
         //get_array_from_libcell_mesh(&mesh,&(mf->Data),&(mf->Data_index)); 
         //mf->Data_rows=mesh.num_v(&mesh);
         //mf->Data_index_rows=mesh.num_c(&mesh);
@@ -918,20 +992,23 @@ void test3D(){
     n=mw.create_something(&mw,edges);
     ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_edges*me=(Mesh_viewer_edges*)(ms->evolution);
-    me->Data_rows=2;
-    me->Data_index_rows=1;
+    me->Data_rows=4;
+    me->Data_index_rows=2;
 
     float*v=(float*)malloc(sizeof(float)*3*me->Data_rows);
     unsigned int*f=(unsigned int*)malloc(sizeof(unsigned int)*2*me->Data_index_rows);
-    v[0]=2.0;v[1]=2.0;v[2]=1.0;
-    v[3]=0.0;v[4]=-2.0;v[5]=1.0;
-    f[0]=0;f[1]=1;
+    v[0]=1.0;v[1]=0.0;v[2]=0.0;
+    v[3]=1.0;v[4]=-0.0;v[5]=0.5;
+     v[6]=-1.0;v[7]=0.0;v[8]=0.0;
+    v[9]=-1.0;v[10]=-0.0;v[11]=0.5;
+
+    f[0]=0;f[1]=1;f[2]=2;f[3]=3;
     me->Data=v;
     me->Data_index=f;
-    me->color_rows=2;
-    me->color=(float*)malloc(sizeof(float)*3*2);
-    me->color[0]=1.0;me->color[1]=0.0;me->color[2]=0.0;
-    me->color[3]=1.0;me->color[4]=0.0;me->color[5]=0.0;
+    me->color_rows=4;
+    me->color=(float*)malloc(sizeof(float)*3*me->color_rows);
+    //me->color[0]=1.0;me->color[1]=0.0;me->color[2]=0.0;
+    //me->color[3]=1.0;me->color[4]=0.0;me->color[5]=0.0;
 
     free_node(n);
     test_camera_and_intera(&mw);
